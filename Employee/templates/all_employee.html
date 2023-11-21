@@ -28,6 +28,7 @@
                 <tbody>
                 { % for i in employee % }
                 <tr>
+                     <td>{{forloop.counter}}</td>
                     <td>{{i.empcode}}</td>
                     <td>{{i.user.first_name}}</td>
                      <td>{{i.user.last_name}}</td>
@@ -35,6 +36,7 @@
                      <td>{{i.contact}}</td>
                      <td>{{i.joiningdate}}</td>
                     <td>{{i.action}}</td>
+                    <td>{{forloop.counter}}</td>
 
                 </tr>
                 { % endfor %}
