@@ -1,0 +1,55 @@
+{% extends 'admin_base.html' %}
+{% block main %}
+
+
+<style>
+    body {
+        background-color: #ffffff; /* Set the background color to white */
+        color: #000000; /* Set the text color to black or another color that contrasts with white */
+    }
+</style>
+<div class="card shadow m-2">
+    <div class="card-body">
+        <h5 class="p-2 text-danger" style="border-bottom : 2px solid orange"> Employee details </h5>
+        <div class="container-fluid">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th> S No. </th>
+                    <th> Emp. Code </th>
+                    <th> First Name </th>
+                    <th> Last Name </th>
+                    <th> Email ID </th>
+                    <th> Contact Number </th>
+                    <th> joining Date </th>
+                    <th> Action  </th>
+                </tr>
+                </thead>
+                <tbody>
+                { % for i in employee % }
+                <tr>
+                    <td>{{i.empcode}}</td>
+                    <td>{{i.user.first_name}}</td>
+                     <td>{{i.user.last_name}}</td>
+                     <td>{{i.user.username}}</td>
+                     <td>{{i.contact}}</td>
+                     <td>{{i.joiningdate}}</td>
+                    <td>{{i.action}}</td>
+
+                </tr>
+                { % endfor %}
+                </tbody>
+            </table>
+
+
+        </div>
+
+    </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+{% endblock %}

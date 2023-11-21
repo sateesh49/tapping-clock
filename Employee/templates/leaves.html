@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Leave Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Employee Leave </h2>
+
+<table>
+    <tr>
+        <th>Employee Name</th>
+        <th>Assigned Leaves</th>
+        <th>Pending Leaves</th>
+        <th>Used Leaves</th>
+        <th>Action</th>
+    </tr>
+    <tr>
+        <td>John Doe</td>
+        <td><span id="assignedLeaves">20</span></td>
+        <td><span id="pendingLeaves">5</span></td>
+        <td><span id="usedLeaves">15</span></td>
+        <td>
+            <button onclick="editLeaves()">Edit</button>
+        </td>
+    </tr>
+    <!-- Add more rows for additional employees -->
+</table>
+
+<script>
+    function editLeaves() {
+        var assignedLeaves = prompt("Enter new assigned leaves:");
+        var pendingLeaves = prompt("Enter new pending leaves:");
+        var usedLeaves = prompt("Enter new used leaves:");
+
+        if (assignedLeaves !== null && pendingLeaves !== null && usedLeaves !== null) {
+            document.getElementById('assignedLeaves').textContent = assignedLeaves;
+            document.getElementById('pendingLeaves').textContent = pendingLeaves;
+            document.getElementById('usedLeaves').textContent = usedLeaves;
+        }
+    }
+</script>
+
+</body>
+</html>

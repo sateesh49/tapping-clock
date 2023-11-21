@@ -1,0 +1,184 @@
+{% load static %}
+
+<style>
+    body {
+        background-color: #00ABB3;
+        /* Replace with the shade of blue you prefer */
+        color: #ffffff;
+        /* Set the text color to contrast with the background */
+    }
+</style>
+
+<html>
+
+<head>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <style>
+        .list-group-item {
+            padding: 10px !important;
+        }
+
+        .list-group-item {
+            font-weight: bold
+        }
+
+        .ben {
+            width: 550px;
+            height: 200px;
+            background-color: black;
+            border-radius: 20px;
+            position: absolute;
+            left: 280px;
+            right: 200px;
+            top: 27%;
+            transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+        }
+
+        #ben2 {
+            width: 550px;
+            height: 200px;
+            background-color: rgb(0, 0, 0);
+            border-radius: 20px;
+            position: absolute;
+            left: 880px;
+            right: 200px;
+            top: 27%;
+
+        }
+
+        .ben:hover {
+            transform: scale(1.1);
+
+        }
+
+        #ben3 {
+            width: 550px;
+            height: 200px;
+            background-color: rgb(0, 0, 0);
+            border-radius: 20px;
+            position: absolute;
+            left: 880px;
+            right: 200px;
+            top: 60%;
+        }
+
+        #ben4 {
+            width: 550px;
+            height: 200px;
+            background-color: rgb(0, 0, 0);
+            border-radius: 20px;
+            position: absolute;
+            left: 280px;
+            right: 200px;
+            top: 60%;
+        }
+
+        .bendash {
+            padding: 20px;
+            background-color: antiquewhite;
+            margin: 5px;
+            border-radius: 10px;
+            color: rgb(0, 0, 0);
+            text-align: center;
+            font-weight: bolder;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .col-sm-2-o-0 {
+            background-color: rgb(0, 0, 0);
+            border-radius: 10px;
+        }
+
+        .textdiv1 {
+            color: #ffffff;
+            text-align: center;
+            margin-top: 80px;
+            font-weight: bolder;
+            font-size: 30px;
+        }
+    </style>
+
+</head>
+
+</html>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2-o-0 ">
+                <center> <img src="{% static 'images/clock.png' %}" width="100" height="100"
+                        class="img-thumbnail rounded-circle my-3"> </center>
+                <div class="list-group">
+                    <a class="bendash" href="{% url 'admin_home' %}"
+                        class="list-group-item list-group-item-danger list-group-item-action {% if request.path == '/emp_home' %} active {% endif %}">Dashboard</a>
+                    <a class="bendash" href="{% url 'admin_home' %}"
+                        class="list-group-item list-group-item-warning list-group-item-action">All Employees</a>
+                    <a class="bendash" href="{% url 'all_employee' %}"
+                        class="list-group-item list-group-item-success list-group-item-action">Task Assigned</a>
+                    <a class="bendash" href=""
+                        class="list-group-item list-group-item-secondary list-group-item-action">Task Update</a>
+                    <a class="bendash" href=""
+                        class="list-group-item list-group-item-secondary list-group-item-action">Holidays</a>
+                    <a class="bendash" href=""
+                        class="list-group-item list-group-item-secondary list-group-item-action">Leaves of
+                        Employee</a>
+                    <a class="bendash" href="{% url 'change_passwordadmin' %}"
+                        class="list-group-item list-group-item-warning list-group-item-action">Change Password
+                    </a>
+                    <a class="bendash" href=""
+                        class="list-group-item list-group-item-warning list-group-item-action">Log Out </a>
+
+                </div>
+
+            </div>
+
+            <div class="col-sm-10 p-0">
+                <div class="container-fluid p-2">
+                    <h5 class="text-center p-3 font-weight-bold"
+                        style="border-bottom : 2px solid green; border-top :2px solid green"> Tapping Clock </h5>
+                    <div class="card shadow" style="min height : 90vh ">
+                        <div class="card-body">
+                            {% block main %}
+
+
+
+
+                            {% endblock %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- <p>Hello</p> -->
+    <div class="ben" id="ben1">
+        <p class="textdiv1">No.of Employees</p>
+    </div>
+    <div class="ben" id="ben2">
+        <p class="textdiv1">Tasks Assigned</p>
+    </div>
+    <div class="ben" id="ben3">
+        <p class="textdiv1">Leaves</p>
+    </div>
+    <div class="ben" id="ben4">
+        <p class="textdiv1">Change Password</p>
+    </div>
+</body>

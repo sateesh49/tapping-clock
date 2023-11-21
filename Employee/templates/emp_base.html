@@ -1,0 +1,252 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <style>
+        body {
+            background-color: #f0f0f0; /* Light Gray */
+            color: #333; /* Dark Gray */
+            margin: 0;
+        }
+
+        #sidebar {
+            background-color: #040404; /* Dodger Blue */
+            color: #fff; /* White */
+            padding-top: 20px;
+            height: 122vh;
+        }
+
+        .list-group {
+            height: 80vh;
+            overflow-y: auto; /* Add scrollbar if needed */
+        }
+
+        .list-group-item {
+            padding: 10px 20px !important; /* Decreased padding */
+            color: #fff; /* White */
+            font-weight: bold;
+            border: none;
+            margin-bottom: 15px;
+            cursor: pointer;
+            font-family: Verdana, sans-serif; /* Set font to Verdana */
+            transition: background-color 0.3s ease;
+        }
+
+        .dashboard {
+            background-color: #000000; /* Black */
+            height: 100vh; /* Match screen size */
+        }
+
+        .profile { background-color: #2ecc71; /* Emerald Green */ }
+        .task-assign { background-color: #e74c3c; /* Alizarin Red */ }
+        .holidays { background-color: #f39c12; /* Sunflower Yellow */ }
+        .leaves { background-color: #9b59b6; /* Amethyst Purple */ }
+        .change-password { background-color: #34495e; /* Wet Asphalt Gray */ }
+        .log-out { background-color: #c0392b; /* Pomegranate Red */ }
+
+        .list-group-item.active {
+            background-color: #070707; /* Slightly Darker Dodger Blue */
+        }
+
+        .list-group-item:hover {
+            background-color: #154360; /* Darker Dodger Blue on hover */
+        }
+
+        .card {
+            border: none;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .card-header {
+            background-color: #2c3e50; /* Midnight Blue */
+            color: #fff; /* White */
+        }
+
+        .card-body {
+            background-color: #ecf0f1; /* Light Grayish Blue */
+        }
+
+        h5 {
+            color: #ffA500; /* Orange */
+        }
+
+        .profile-info {
+            background-color: #000; /* Black */
+            color: #fff; /* White */
+            text-align: center;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .material-icons {
+            font-size: 48px;
+            color: #fff; /* White */
+        }
+
+        .social-icons {
+            font-size: 24px;
+            margin: 0 5px;
+            color: #fff; /* White */
+        }
+
+        /* New styles for additional sections */
+        .dashboard-section {
+            background-color: #000; /* Black */
+            color: #fff; /* White */
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s ease; /* Add transition effect */
+        }
+
+        .dashboard-section:hover {
+            transform: scale(1.05); /* Zoom in slightly on hover */
+        }
+
+        .buttondash{
+            padding:10px !important;
+            background-color:wheat;
+            color: rgb(0, 0, 0);
+            margin:10px;
+            border-radius: 10px;
+            font-weight: bolder;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .h55{
+            font-size: 50px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-align: center;
+        }
+
+        .dashboard-section{
+            height:205px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2 p-0" id="sidebar">
+                <center>
+                    <!-- Card with Image, Name, Title, and Social Media Links -->
+                    <div class="card profile-info">
+                        <span class="material-icons profile-img">person</span>
+                        <h5 class="text-capitalize"> {{request.user.first_name}} {{request.user.last_name}}</h5>
+                        <p class="card-text">Your Title</p>
+                        <!-- Social Media Links -->
+                        <div>
+                            <a href="#" class="social-icons"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icons"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-icons"><i class="fab fa-github"></i></a>
+                            <!-- Add more social media links as needed -->
+                        </div>
+                    </div>
+                </center>
+
+                <div class="list-group">
+                    <a href="{% url 'emp_home' %}" class="buttondash" class="list-group-item dashboard {% if request.path == '/emp_home/' %} active {% endif %}">Dashboard</a>
+                    <a href="{% url 'profile' %}" class="buttondash" class="list-group-item profile {% if request.path == '/profile/' %} active {% endif %}">Profile</a>
+                    <a href="{% url 'emp_task' %}" class="buttondash" class="list-group-item task-assign {% if request.path == '/emp_task/' %} active {% endif %}">Task Assign</a>
+                    <a href="{% url 'holidays' %}" class="buttondash" class="list-group-item holidays {% if request.path == '/holidays/' %} active {% endif %}">Holidays</a>
+                    <a href="#" class="buttondash" class="list-group-item leaves {% if request.path == '/leaves' %} active {% endif %}">Leaves</a>
+                    <a href="{% url 'change_password' %}" class="buttondash" class="list-group-item change-password {% if request.path == '/change_password/' %} active {% endif %}">Change Password</a>
+                    <a href="{% url 'logout'%}" class="buttondash" class="list-group-item log-out">Log Out</a>
+                </div>
+            </div>
+
+            <div class="col-sm-10 p-0">
+                <div class="container-fluid p-2">
+                    <h5 class="h55" class="text-center p-3 font-weight-bold" style="border-bottom: 2px solid #27ae60;">Tapping Clock</h5>
+
+                    <!-- Additional Sections -->
+                    <div class="row">
+                        <!-- Section 2 -->
+                        <div class="col-sm-6">
+                            <div class="dashboard-section">
+                                <h3>Profile</h3>
+                                <p>Your profile information and settings.</p>
+                            </div>
+                        </div>
+
+                        <!-- Section 3 -->
+                        <div class="col-sm-6">
+                            <div class="dashboard-section">
+                                <h3>Task Assign</h3>
+                                <p>View and manage your assigned tasks.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <!-- Section 4 -->
+                        <div class="col-sm-6">
+                            <div class="dashboard-section">
+                                <h3>Holidays</h3>
+                                <p>Check upcoming holidays and events.</p>
+                            </div>
+                        </div>
+
+                        <!-- Section 5 -->
+                        <div class="col-sm-6">
+                            <div class="dashboard-section">
+                                <h3>Leaves</h3>
+                                <p>Submit and track your leave requests.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <!-- Section 6 -->
+                        <div class="col-sm-6">
+                            <div class="dashboard-section">
+                                <h3>Change Password</h3>
+                                <p>Update your login password.</p>
+                            </div>
+                        </div>
+
+                        <!-- Section 9 -->
+                        <div class="col-sm-6">
+                            <div class="dashboard-section">
+                                <h3>Additional Section</h3>
+                                <p>Some additional information or functionality.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- End of Additional Sections -->
+
+                    <div class="card shadow">
+                        <div class="card-body">
+                            {% block main %}
+                            {% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

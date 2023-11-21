@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #cad0d7; /* Light Blue-Gray */
+            color: #2c3e50; /* Dark Blue-Gray */
+        }
+        h1 {
+            text-align: center;
+            color: #3498db; /* Dodger Blue */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: linear-gradient(to bottom, #ecf0f1, #dfe6e9); /* Light Grays */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #bdc3c7; /* Silver */
+        }
+        th {
+            background-color: #bdc3c7; /* Silver */
+            color: #2c3e50; /* Dark Blue-Gray */
+        }
+        .holiday {
+            color: #e74c3c; /* Alizarin Crimson */
+            font-weight: bold;
+        }
+        .working-day {
+            color: #27ae60; /* Nephritis Green */
+            font-weight: bold;
+        }
+        form {
+            margin-top: 20px;
+            background: linear-gradient(to bottom, #ecf0f1, #dfe6e9); /* Light Grays */
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50; /* Dark Blue-Gray */
+        }
+        input[type="date"],
+        input[type="text"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #bdc3c7; /* Silver */
+            border-radius: 3px;
+            box-sizing: border-box;
+            background: linear-gradient(to bottom, #ecf0f1, #dfe6e9); /* Light Grays */
+            color: #2c3e50; /* Dark Blue-Gray */
+        }
+        input[type="submit"] {
+            background: linear-gradient(to bottom, #3498db, #2980b9); /* Dodger Blue */
+            color: #fff;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background: linear-gradient(to bottom, #2980b9, #3498db); /* Darker Dodger Blue */
+        }
+    </style>
+</head>
+<body>
+    <div style="max-width: 800px; margin: 0 auto;">
+        <h1>Government Holidays</h1>
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Holiday</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td class="holiday">January 1, 2023</td>
+                <td class="holiday">New Year's Day</td>
+                <td class="holiday">Holiday</td>
+            </tr>
+            <tr>
+                <td>January 21, 2023</td>
+                <td>Martin Luther King Jr. Day</td>
+                <td class="working-day">Working Day</td>
+            </tr>
+            <tr>
+            <td>January 26, 2023</td>
+            <td class="holiday">Republic Day</td>
+                <td class="holiday">Holiday</td>
+        </tr>
+        <tr>
+            <td>May 1, 2023</td>
+            <td class="holiday">Labor Day</td>
+            <td class="holiday">Holiday</td>
+        </tr>
+        <tr>
+            <td>August 15, 2023</td>
+            <td class="holiday">Independence Day</td>
+            <td class="holiday">Holiday</td>
+        </tr>
+        <tr>
+            <td>October 2, 2023</td>
+            <td class="holiday">Gandhi Jayanti</td>
+            <td class="holiday">Holiday</td>
+        </tr>
+        <tr>
+            <td>December 25, 2023</td>
+            <td class="holiday">Christmas Day</td>
+            <td class="holiday">Holiday</td>
+        </tr>
+        <tr>
+            <td>April 14, 2023</td>
+            <td class="holiday">Baisakhi (Punjabi New Year)</td>
+            <td class="holiday">Holiday</td>
+        </tr>
+        <tr>
+            <td>November 14, 2023</td>
+            <td class="holiday">Diwali</td>
+            <td class="holiday">Holiday</td>
+        </tr>
+            <!-- Add more rows for other holidays or working days -->
+        </table>
+        <form id="addHolidayForm">
+            <label for="newDate">Date:</label>
+            <input type="date" id="newDate" required>
+            <label for="newHoliday">Holiday:</label>
+            <input type="text" id="newHoliday" required>
+            <input type="submit" value="Add Holiday">
+        </form>
+    </div>
+</body>
+</html>

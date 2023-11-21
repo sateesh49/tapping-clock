@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Assign </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000; /* Add black background to the body */
+            color: #FFFFFF; /* Set text color to white */
+            margin: 0; /* Remove default margin */
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #FFFFFF; /* Set border color to white */
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: rgb(137, 137, 137);
+        }
+        .task-list {
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #FFFFFF; /* Set button background color to white */
+            color: #000000; /* Set button text color to black */
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #00C57E; /* Change button background color on hover to black */
+            color: rgb(255, 255, 255); /* Change button text color on hover to white */
+        }
+        h2{
+            text-align:center}
+        .add-task-button {
+            display: block;
+            margin: 0 auto; /* Center the button horizontally */
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+<h2 style="color: #FFFFFF;">Task Assgin </h2>
+    <div class="task-list">
+        <h3>List 1</h3>
+        <table id="taskTable1">
+            <tr>
+                <th>Task</th>
+                <th>Assigned To</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td><span id="taskName1">Complete Project Report</span></td>
+                <td><span id="assignedTo1">John john</span></td>
+                <td><span id="taskStatus1">Pending</span></td>
+                <td>
+                    <button onclick="completeTask(1)">Complete</button>
+                    <button onclick="editTask(1)">Edit</button>
+                </td>
+            </tr>
+            <!-- Add more rows for additional tasks in List 1 -->
+        </table>
+    <div class = "container">
+        <button onclick="addNewTask(1)">Add New Task</button>
+    </div>
+</div>
+<div class="task-list ">
+    <h3>List 2</h3>
+    <table id="taskTable2">
+        <tr>
+            <th>Task</th>
+            <th>Assigned To</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td><span id="taskName2">Review Proposal</span></td>
+            <td><span id="assignedTo2">rocky rocky</span></td>
+            <td><span id="taskStatus2">Pending</span></td>
+            <td>
+                <button onclick="completeTask(2)">Complete</button>
+                <button onclick="editTask(2)">Edit</button>
+            </td>
+        </tr>
+        <!-- Add more rows for additional tasks in List 2 -->
+    </table>
+    <div class = "container">
+        <button onclick="addNewTask(2)">Add New Task</button>
+    </div>
+</div>
+<script>
+    function completeTask(listNumber) {
+        var statusElement = document.getElementById('taskStatus' + listNumber);
+        var currentStatus = statusElement.textContent;
+        if (currentStatus === 'Pending') {
+            statusElement.textContent = 'Complete';
+            alert('Task marked as complete!');
+        } else {
+            alert('Task is already complete.');
+        }
+    }
+    function editTask(listNumber) {
+        var taskName = prompt("Enter new task name:");
+        var assignedTo = prompt("Enter new assigned person:");
+        if (taskName !== null && assignedTo !== null) {
+            document.getElementById('taskName' + listNumber).textContent = taskName;
+            document.getElementById('assignedTo' + listNumber).textContent = assignedTo;
+            alert('Task details updated!');
+        }
+    }
+    function addNewTask(listNumber) {
+        var taskTable = document.getElementById('taskTable' + listNumber);
+        var newRow = taskTable.insertRow(-1);
+        var taskCell = newRow.insertCell(0);
+        var assignedToCell = newRow.insertCell(1);
+        var statusCell = newRow.insertCell(2);
+        var actionCell = newRow.insertCell(3);
+        var newTaskName = prompt("Enter new task name:");
+        var newAssignedTo = prompt("Enter assigned person:");
+        taskCell.innerHTML = '<span>' + newTaskName + '</span>';
+        assignedToCell.innerHTML = '<span>' + newAssignedTo + '</span>';
+        statusCell.innerHTML = '<span>Pending</span>';
+        actionCell.innerHTML = '<button onclick="completeTask(' + listNumber + ')">Complete</button>' +
+                              '<button onclick="editTask(' + listNumber + ')">Edit</button>';
+    }
+</script>
+</body>
+</html>

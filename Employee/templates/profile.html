@@ -1,0 +1,123 @@
+{% extends 'emp_base.html' %}
+{% block main %}
+<style>
+    body {
+        background-color: #ffffff; /* Set the background color to white */
+        color: #000000; /* Set the text color to black or another color that contrasts with white */
+    }
+</style>
+
+
+    <h1 class="text-center m-2">Employee Profile </h1>
+
+
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <div class="card bg-grey text-black font-weight : bold">
+              <div class="card-body">
+                <form method="post">
+
+                  {% csrf_token %}
+                  <div class="mb-3 ">
+                    <label>First Name</label>
+                     <input type="text" name="firstname" class="form-control" placeholder="Enter First name" pattern="[A-Za-z ]+"value="{{employee.user.first_name}}">
+                  </div>
+
+                  <div class="mb-3">
+                    <label>Last Name</label>
+                    <input type="text" name="lastname" class="form-control" placeholder="Enter Last Name" pattern="[A-Za-z ]+"value="{{employee.user.last_name}}">
+                  </div>
+
+                  <div class="mb-3">
+                    <label>Employee ID</label>
+                    <input type="text" name="empcode" class="form-control" placeholder="Enter Your Employee Code" pattern="[0-9]+" value="{{employee.empcode}}">
+                  </div>
+
+                  <div class="col-mb-3">
+                      <div class="form-group">
+                          <label>Contact</label>
+                          <input type="text" name="contact" class="form-control" placeholder="Contact number" value="{{employee.contact}}">
+                      </div>
+                  </div>
+
+                    <div class="col-mb-3">
+                        <div class="form-group">
+                        <label>Employee Department</label>
+                        <input type="text" name="department" class="form-control" placeholder="Department" value="{{employee.empdept}}" >
+
+
+                    </div>
+                  </div>
+
+                    <div class="col-mb-3">
+                        <div class="form-group">
+                        <label>Employee Designation</label>
+                        <input type="text" name="designation" class="form-control" placeholder="Designation" value="{{employee.desgnation}}">
+
+
+                    </div>
+                  </div>
+
+                   <div class="col-mb-3">
+                        <div class="form-group">
+                            <label>Email ID</label>
+                            <input type="email" name="email" class="form-control" placeholder="Enter Your Email ID"value="{{employee.user.username}}">
+
+
+                        </div>
+                    </div>
+                <div class="col-mb-3">
+                        <div class="form-group">
+                            <label>Gender[{{employee.gender}}]</label>
+                            <select name="gender" class="form-control">
+                                <option value='None'> Select Gender </option>
+                                <option value='None'> Male</option>
+                                <option value='None'> Female </option>
+                            </select>
+
+                        </div>
+                    </div>
+
+                    <div class="col-mb-3">
+                        <div class="form-group">
+                            <label>Joining Date [{{employee.joiningdate}}]</label>
+                            <input type="date" name="jdate" class="form-control">
+
+
+                        </div>
+                    </div>
+
+
+                  <div class="container text-center">
+                      <button class="btn" style="background-color: #00ABB3;">
+                          Submit
+                      </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+
+{% if error == "no" %}
+<script>
+    alert('Profile updated Successfully');
+    window.location = '{% url 'profile' %}';
+</script>
+{% endif %}
+
+{% if error == 'yes' %}
+<script>
+    alert('Something went wrong, try again...');
+</script>
+{% endif %}
+
+{% endblock %}
